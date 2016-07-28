@@ -6,19 +6,20 @@ $(document).ready(function() {
   $('#button').on('click', function(e) {
     e.preventDefault();
     var newListElem = $('<li></li>').text(input.val());
-    var deleteButton = newListElem.append("<div class='x' style='display:inline'><i class='fa fa-times' aria-hidden='true'></i></div>");
+    var deleteButton = "<button class='x'>  <i class='fa fa-times' aria-hidden='true'></i></button>";
+    newListElem.append(deleteButton);
     input.val('');
 
-    deleteButton.on('click', function () {
-      $(this).remove();
+    $(document).on('click', '.x', function () {
+      $(this).parent().remove();
     });
 
     $('ul').append(newListElem);
   });
 
-  // $( function() {
-  //   $( "#sortable" ).sortable();
-  //   $( "#sortable" ).disableSelection();
-  // });
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
 
 });
